@@ -1,18 +1,14 @@
 // src/store/index.js
-import { combineReducers, createStore } from "redux";
-// import userReducer from "./user/reducer";
-// import pizzasReducer from "./pizzas/reducer";
+import { createStore, applyMiddleware, compose } from "redux";
+import ReduxThunk from "redux-thunk";
+import reducer from "./reducer";
 
-const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
   : (x) => x;
 
-const store = createStore(
-  combineReducers({
-    // user: userReducer,
-    // pizzas: pizzasReducer,
-  }),
-  enhancer
-);
+const enhancer = compose(applyMiddleware(ReduxThunk), devTools);
+
+const store = createStore(reducer, enhancer);
 
 export default store;
