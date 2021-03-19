@@ -11,6 +11,11 @@ export default (state = initialState, action) => {
         categories: action.payload,
       };
 
+    case "products/fetchedById":
+      return {
+        loading: false,
+        categories: action.payload,
+      };
     default:
       return state;
   }

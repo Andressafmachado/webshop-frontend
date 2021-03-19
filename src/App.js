@@ -3,6 +3,7 @@ import "./App.css";
 import ToolBar from "./components/ToolBar";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 import SignupPage from "./pages/SignupPage";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <ToolBar />
       <Switch>
+        <Route path="/productdetails/:id" component={ProductDetailsPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="/" component={HomePage} exact />
