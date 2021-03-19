@@ -5,7 +5,7 @@ const apiUrl = process.env.API_URL || "//localhost:4000";
 export function productsList(data) {
   console.log(`DATA`, data);
   return {
-    type: "PRODUCTS_FETCHED",
+    type: "products/fetched",
     payload: data,
   };
 }

@@ -20,7 +20,7 @@ export default function ProductCart() {
       ) : (
         allProducts.map((product) => {
           return (
-            <div>
+            <div key={product.id}>
               Product: {product.name}
               <br />
               Price: {product.price}

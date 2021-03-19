@@ -2,10 +2,10 @@ const initialState = { loading: true, categories: [] };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case "LOADING_START":
+    case "products/loadingStart":
       return { ...state, loading: action.payload };
 
-    case "PRODUCTS_FETCHED":
+    case "products/fetched":
       return {
         loading: false,
         categories: action.payload,
