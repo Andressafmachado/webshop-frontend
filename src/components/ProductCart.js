@@ -21,7 +21,8 @@ export default function ProductCart() {
         allProducts.map((product) => {
           return (
             <div key={product.id}>
-              Product: {product.name}
+              Product:
+              <Link to={`/productdetails/${product.id}`}>{product.name}</Link>
               <br />
               Price: {product.price}
               <br />
