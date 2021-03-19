@@ -2,15 +2,14 @@ import { Link } from "react-router-dom";
 // import { selectUser } from "../store/auth/selectors";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-// import { logout } from "../store/auth/actions";
+import { logout } from "../store/user/actions";
+import { selectUser } from "../store/user/selectors";
 
 export default function Toolbar() {
-  //   const dispatch = useDispatch();
-  //   const allUsers = useSelector(selectUser);
-  //   console.log(`ALL USERS`, allUsers);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
-  return (
-    //   !allUsers ? (
+  return !user ? (
     <div>
       <div>
         <Link to={`/login`}>Login</Link>
@@ -19,15 +18,12 @@ export default function Toolbar() {
         <Link to={`/signup`}>Signup</Link>
       </div>
     </div>
-    //   ) : (
-    //     <div>
-    //       <div>{`Hi ${allUsers.name}, welcome`}</div>
-    //       <div>
-    //         <button
-    //         onClick={() => dispatch(logout)}
-    //         >Logout</button>
-    //       </div>
-    //     </div>
-    //   );
+  ) : (
+    <div>
+      <div>{`Hi ${user.firstName}, welcome`}</div>
+      <div>
+        <button onClick={() => dispatch(logout)}>Logout</button>
+      </div>
+    </div>
   );
 }

@@ -18,8 +18,8 @@ export default function SignupForm() {
   };
   const onFormSubmit = (e) => {
     e.preventDefault();
-    const { name, email, password } = formData;
-    dispatch(signUp(name, email, password, history));
+    const { firstName, email, password } = formData;
+    dispatch(signUp(firstName, email, password, history));
   };
 
   return (
@@ -29,8 +29,8 @@ export default function SignupForm() {
         <input
           style={{ marginBottom: 10, marginTop: 10 }}
           type="texto"
-          value={formData.name}
-          name="name"
+          value={formData.firstName}
+          name="firstName"
           onChange={onFieldChange}
         ></input>
         <br />

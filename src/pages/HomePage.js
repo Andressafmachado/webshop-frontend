@@ -4,9 +4,8 @@ import ProductCart from "../components/ProductCart";
 export default function HomePage() {
   return (
     <div>
+      <h1>Welcome, all products:</h1>
       <ProductCart />
-      THIS IS MY HOME PAGE ADD SOME TEXT HERE so you can check if everything is
-      working
     </div>
   );
 }

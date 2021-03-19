@@ -3,7 +3,7 @@ import SignupForm from "../components/SignupForm";
 export default function SignupPage() {
   return (
     <div>
-      SIGN UP PAGE
+      <h2>Signup here:</h2>
       <SignupForm />
     </div>
   );
