@@ -1,7 +1,7 @@
 // src/components/PorductCart.js
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { productsList, fetchProducts } from "../store/products/actions";
+import { fetchProducts } from "../store/products/actions";
 import { Link } from "react-router-dom";
 import { selectProducts } from "../store/products/selectors";
 
@@ -20,7 +20,7 @@ export default function ProductCart() {
       ) : (
         allProducts.map((product) => {
           return (
-            <div key={product.id}>
+            <div className="products" key={product.id}>
               Product:
               <Link to={`/productdetails/${product.id}`}>{product.name}</Link>
               <br />

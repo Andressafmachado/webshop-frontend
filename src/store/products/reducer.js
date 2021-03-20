@@ -1,6 +1,6 @@
 const initialState = { loading: true, categories: [] };
 
-export default (state = initialState, action) => {
+export default function productReducer(state = initialState, action) {
   switch (action.type) {
     case "products/loadingStart":
       return { ...state, loading: action.payload };
@@ -19,4 +19,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-};
+}

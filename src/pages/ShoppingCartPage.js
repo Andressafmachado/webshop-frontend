@@ -1,17 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../store/user/selectors";
-import { fetchUserById } from "../store/user/actions";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCartPage() {
-  const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
-  console.log(`user `, user);
-
-  useEffect(() => {
-    dispatch(fetchUserById(user));
-  }, [dispatch, user]);
+  // console.log(`user `, user);
 
   return (
     <div>
@@ -33,10 +26,15 @@ export default function ShoppingCartPage() {
           <h2>Orders:</h2>
           {user.orders.map((order) => {
             return (
-              <div>
+              <div key={order.id}>
                 order number: {order.id}
                 <br />
                 status: {order.status}
+                <br />
+                <Link to={`/orderdetails/${order.id}`}>
+                  {" "}
+                  <button style={{ marginBottom: 20 }}>more details</button>
+                </Link>{" "}
               </div>
             );
           })}

@@ -9,6 +9,7 @@ import SignupPage from "./pages/SignupPage";
 import { useDispatch } from "react-redux";
 import { bootstrapLogin } from "./store/user/actions";
 import { useEffect } from "react";
+import OrderDetails from "./pages/OrderDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,8 +21,8 @@ function App() {
     <div className="App">
       <ToolBar />
       <Switch>
+        <Route path="/orderdetails/:id" component={OrderDetails} />
         <Route path="/cart" component={ShoppingCartPage} />
-
         <Route path="/productdetails/:id" component={ProductDetailsPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
