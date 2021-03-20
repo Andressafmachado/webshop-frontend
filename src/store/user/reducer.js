@@ -21,6 +21,10 @@ export default function userReducer(state = initialState, action) {
     case "user/logout": {
       return initialState;
     }
+    case "user/userById": {
+      const { userData, token } = action.payload;
+      return { ...state, userData: userData, token: token, loading: false };
+    }
     default: {
       return state;
     }

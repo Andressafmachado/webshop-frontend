@@ -36,6 +36,21 @@ export const signUp = (firstName, email, password, history) => async (
   }
 };
 
+const getUserProfile = async (token) => {
+  try {
+    // request GET to /me
+    const response = await axios.get("http://localhost:4000/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(response);
+    return response.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const login = (email, password, history) => async (
   dispatch,
   getState
@@ -60,17 +75,47 @@ export const login = (email, password, history) => async (
     console.log("userProfileResponse", userProfileResponse.data);
 
     const userData = userProfileResponse.data;
+    localStorage.setItem("jwt", token);
 
     // dispatch(setToken(token));
     dispatch(loginSuccess(userData, token));
-    history.push("/"); // send them to homepage
+    history.push("/cart"); // send them to homepage
   } catch (e) {
     console.log(e.message);
+  }
+};
+
+export const bootstrapLogin = () => async (dispatch, getState) => {
+  const jwt = localStorage.getItem("jwt");
+  if (jwt) {
+    // make /me call
+    const userProfile = await getUserProfile(jwt);
+    console.log("user profile loaded automatically", userProfile);
+    dispatch(loginSuccess(userProfile, jwt));
+  } else {
+    console.log("no token stored in localstorage");
   }
 };
 
 export function logout(dispatch, getState) {
   dispatch({ type: "user/logout" });
 
-  // localStorage.removeItem("jwt");
+  localStorage.removeItem("jwt");
+}
+
+export function userById(data) {
+  console.log(`user by id`, data);
+  return {
+    type: "user/userById",
+    payload: data,
+  };
+}
+
+export function fetchUserById(id) {
+  // console.log("id at the action", id);
+  return async function thunk(dispatch, getState) {
+    const response = await axios.get(`http://localhost:4000/users/${id}`);
+    console.log("user by id response", response.data);
+    dispatch(userById(response.data));
+  };
 }

@@ -16,6 +16,10 @@ export default function Toolbar() {
         <Link to={`/`}>Home</Link>
       </div>
       <div>
+        {" "}
+        <Link to={`/cart`}>Shopping Cart</Link>
+      </div>
+      <div>
         {!user ? (
           <div>
             <div>
