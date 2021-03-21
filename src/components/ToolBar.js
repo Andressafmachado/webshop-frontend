@@ -17,6 +17,10 @@ export default function Toolbar() {
       </div>
       <div>
         {" "}
+        <Link to={`/myprofile`}>My Profile</Link>
+      </div>
+      <div>
+        {" "}
         <Link to={`/cart`}>Shopping Cart</Link>
       </div>
       <div>

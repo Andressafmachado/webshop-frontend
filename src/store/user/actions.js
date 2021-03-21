@@ -79,7 +79,7 @@ export const login = (email, password, history) => async (
 
     // dispatch(setToken(token));
     dispatch(loginSuccess(userData, token));
-    history.push("/cart"); // send them to homepage
+    history.push("/myprofile"); // send them to homepage
   } catch (e) {
     console.log(e.message);
   }
